@@ -1,0 +1,210 @@
+.your-orders-container {
+  max-width: 950px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.your-orders-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.your-orders-container h1::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  background: #4CAF50;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Orders list */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual order card */
+.order-card {
+display: flex;
+flex-direction: column;
+  border-radius: 15px;
+  border: 1px solid #d1d8e0;
+  padding: 20px;
+  padding-bottom: 80px;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.order-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+/* Header */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Status colors */
+.order-status.delivered { color: #27ae60; }
+.order-status.shipped { color: #3498db; }
+.order-status.processing { color: #f39c12; }
+
+/* Body layout */
+.order-body {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.order-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+.order-details p {
+  margin: 6px 0;
+  color: #34495e;
+}
+
+/* Details button */
+.order-details-btn {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #4CAF50, #43a047);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.order-details-btn:hover {
+  background: linear-gradient(90deg, #43a047, #4CAF50);
+  transform: translateY(-2px);
+}
+.cancel-order-btn{
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #af4c4c, #a04343);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.cancel-order-btn:hover {
+  background: linear-gradient(90deg, #a04343, #af4c4c);
+  transform: translateY(-2px);
+}
+
+/* Responsive for small screens */
+@media screen and (max-width: 600px) {
+  .order-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
+.modal-close-btn:hover {
+  color: #e74c3c;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .order-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+body.modal-open .pro-header {
+display: none;
+}
+
+.order-card {
+  position: relative; /* needed for absolute positioning */
+}
+
+/* Action buttons container at bottom */
+.order-card-actions {
+  position: absolute;
+  bottom: 20px; /* distance from bottom of card */
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between; /* pushes buttons to opposite sides */
+}

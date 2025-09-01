@@ -1,0 +1,81 @@
+/* Background only for Advertise page */
+body.advertise-active {
+  background: linear-gradient(135deg, #ff9800, #ffc107);
+}
+
+/* Container */
+.advertise-container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 25px;
+  background-color: #fff3e0;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.advertise-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #e65100;
+}
+
+.advertise-container p {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Form */
+.advertise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.advertise-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.advertise-form input,
+.advertise-form textarea,
+.advertise-form select {
+  margin-top: 5px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: border 0.3s;
+}
+
+.advertise-form input:focus,
+.advertise-form textarea:focus,
+.advertise-form select:focus {
+  outline: none;
+  border-color: #e65100;
+}
+
+.advertise-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.advertise-btn {
+  padding: 12px 25px;
+  background-color: #e65100;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.advertise-btn:hover {
+  background-color: #bf360c;
+}

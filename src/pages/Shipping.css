@@ -1,0 +1,114 @@
+/* Container heading */
+.your-orders-container2 h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.your-orders-container2 h1::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: #4CAF50;
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+/* Grid layout for cards */
+.orders-list2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+  gap: 25px;
+}
+
+/* Individual card */
+.order-card2 {
+  background-color: #bcade6;
+  border-radius: 15px;
+  padding: 25px 20px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.order-card2:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Card header */
+.order-header2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #095a0e;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #a38fd7;
+  padding-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.order-header2:hover {
+  color: #27ae60;
+}
+
+/* Plus/Minus icon */
+.order-header2 span:last-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4CAF50;
+  transition: transform 0.3s;
+}
+
+.order-header2.open span:last-child {
+  transform: rotate(180deg);
+}
+
+/* Card body (collapsible content) */
+.order-body2 {
+  font-size: 0.95rem;
+  color: #34495e;
+  line-height: 1.6;
+  margin-top: 12px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+}
+
+.order-body2.closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.order-body2.open {
+  max-height: 500px; /* adjust if content is larger */
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .order-card2 {
+    padding: 20px 15px;
+  }
+
+  .order-header2 {
+    font-size: 1rem;
+  }
+
+  .order-body2 {
+    font-size: 0.9rem;
+  }
+}

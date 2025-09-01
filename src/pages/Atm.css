@@ -1,0 +1,88 @@
+/* Container with gradient background */
+.atm-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: linear-gradient(145deg, #ffffff, #f1f3f6);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.atm-container:hover {
+  transform: translateY(-5px);
+}
+
+.atm-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50; /* Modern dark-blue shade */
+  font-size: 2rem; /* Slightly larger */
+  font-weight: 700; /* Bold and professional */
+  letter-spacing: 1.5px; /* Subtle spacing */
+  text-transform: uppercase; /* Gives a formal look */
+  position: relative;
+}
+
+
+
+
+/* Form styling */
+.atm-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.atm-form input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 5px;
+  border-radius: 12px;
+  border: 1px solid #d1d8e0;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.atm-form input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Button styling */
+.atm-form button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #4CAF50, #43a047);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.atm-form button:hover {
+  background: linear-gradient(90deg, #43a047, #4CAF50);
+  transform: translateY(-2px);
+}
+
+.atm-message {
+  margin-top: 20px;
+  text-align: center;
+  color: #27ae60;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

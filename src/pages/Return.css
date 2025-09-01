@@ -1,0 +1,119 @@
+/* -------------------- Refunds Container -------------------- */
+.refunds-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 50px 30px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #fdfdfd, #f0f9f4);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Page title */
+.refunds-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.refunds-container h1::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 4px;
+  background: linear-gradient(90deg, #43a047, #2e7d32);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+/* Accordion Cards */
+.refund-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.refund-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  cursor: default;
+}
+
+.refund-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Card header */
+.refund-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: linear-gradient(90deg, #e0f2f1, #c8e6c9);
+  transition: background 0.3s, color 0.3s;
+  border-bottom: 1px solid #ddd;
+}
+
+.refund-header.open {
+  background: linear-gradient(90deg, #43a047, #2e7d32);
+  color: #fff;
+}
+
+.refund-header span:last-child {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #43a047;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.refund-header.open span:last-child {
+  transform: rotate(180deg);
+  color: #fff;
+}
+
+/* Card body */
+.refund-body {
+  padding: 0 25px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.refund-body p {
+  margin: 20px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.refund-body.open {
+  opacity: 1;
+  padding: 15px 25px 25px 25px;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .refund-list {
+    grid-template-columns: 1fr;
+  }
+
+  .refund-header {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+
+  .refund-body p {
+    font-size: 0.9rem;
+  }
+}

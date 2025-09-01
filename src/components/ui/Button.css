@@ -1,0 +1,21 @@
+.zoom-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Smooth zoom effect */
+  transition: transform 0.5s ease, background-color 0.3s ease;
+}
+
+.zoom-button:hover {
+  transform: scale(1.2); /* zoom 1.2 times */
+  background-color: #2980b9; /* slightly darker on hover */
+}
+
+.zoom-button:active {
+  transform: scale(1); /* back to normal when clicked */
+}
