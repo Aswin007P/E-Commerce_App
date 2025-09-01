@@ -1,37 +1,44 @@
 import "./Auth.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../features/auth/authSlice.jsx";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Clear error for the current field as user types
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
     }
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username) newErrors.username = 'Username is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    
-    if (!formData.password) newErrors.password = 'Password is required';
-    else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    if (!formData.username) newErrors.username = "Username is required";
+
+    if (!formData.email) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email is invalid";
+
+    if (!formData.password) newErrors.password = "Password is required";
+    else if (formData.password.length < 6) newErrors.password = "Password must be at least 6 characters";
 
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (loading) return; // prevent double submit
+
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -39,11 +46,16 @@ const Login = () => {
     }
 
     setLoading(true);
+
+    // Simulate async login (replace with API call later)
     setTimeout(() => {
-      // dispatch username instead of deriving from email
       dispatch(login({ id: 1, name: formData.username, email: formData.email }));
       setLoading(false);
-      navigate('/');
+
+      // Reset form after successful login
+      setFormData({ username: "", email: "", password: "" });
+
+      navigate("/");
     }, 800);
   };
 
@@ -63,7 +75,7 @@ const Login = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className={errors.username ? 'input-error' : ''}
+              className={errors.username ? "input-error" : ""}
               disabled={loading}
             />
             {errors.username && <span className="error-text">{errors.username}</span>}
@@ -78,7 +90,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={errors.email ? 'input-error' : ''}
+              className={errors.email ? "input-error" : ""}
               disabled={loading}
             />
             {errors.email && <span className="error-text">{errors.email}</span>}
@@ -93,21 +105,21 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={errors.password ? 'input-error' : ''}
+              className={errors.password ? "input-error" : ""}
               disabled={loading}
             />
             {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
 
           <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
         <div className="auth-footer">
           <p>
-            Don't have an account?{' '}
-            <a href="/register">Register here</a>
+            Don't have an account?{" "}
+            <Link to="/register">Register here</Link>
           </p>
         </div>
       </div>
