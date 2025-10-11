@@ -67,7 +67,7 @@ const Header = () => {
           <div className="logo">
             <Link to="/" className="logo-link">
               <span className="logo-icon">✨</span>
-              <span className="logo-text">ＦＬＩＰＯＮ</span>
+              <span className="logo-text">FLIPOF</span>
               <span className="logo-icon">✨</span>
             </Link>
           </div>
