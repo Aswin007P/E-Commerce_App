@@ -1,44 +1,49 @@
+/* Base container */
 .careers-container {
-  padding: 60px 20px;
-  max-width: 1100px;
+  padding: clamp(40px, 8vh, 60px) clamp(15px, 5vw, 20px);
+  width: min(90vw, 1100px);
   margin: 0 auto;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   color: #222;
   line-height: 1.6;
 }
 
+/* Header */
 .careers-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: clamp(30px, 6vw, 40px);
   background: linear-gradient(135deg, #0077ff, #00c6ff);
   color: white;
-  text-align: center;
-  padding: 80px 20px;
-  border-radius: 0 0 40px 40px;
+  padding: clamp(60px, 18vw, 80px) clamp(15px, 5vw, 20px);
+  border-radius: 0 0 clamp(20px, 6vw, 40px) clamp(20px, 6vw, 40px);
 }
 
 .careers-header h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 6vw, 2.5rem);
   font-weight: bold;
-  color:white;
+  color: white;
+  margin: 0;
 }
 
 .careers-header p {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 3vw, 1.1rem);
   color: whitesmoke;
-  margin-top: 10px;
+  margin-top: clamp(8px, 2vw, 10px);
+  line-height: 1.5;
 }
 
+/* Job List Grid */
 .career-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(20px, 5vw, 25px);
 }
 
+/* Job Card */
 .career-card {
   background: #fff;
-  padding: 25px;
-  border-radius: 12px;
+  padding: clamp(20px, 6vw, 25px);
+  border-radius: clamp(8px, 3vw, 12px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -49,26 +54,26 @@
 }
 
 .career-card h3 {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 4vw, 1.4rem);
   color: #2c3e50;
-  margin-bottom: 10px;
+  margin-bottom: clamp(8px, 2vw, 10px);
 }
 
 .career-card p {
   color: #666;
-  font-size: 1rem;
-  margin-bottom: 15px;
+  font-size: clamp(0.95rem, 2.8vw, 1rem);
+  margin-bottom: clamp(12px, 3vw, 15px);
 }
 
 .apply-btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: clamp(8px, 2.5vw, 10px) clamp(16px, 4vw, 20px);
   background: #3498db;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2.6vw, 0.95rem);
   font-weight: 500;
   border: none;
-  border-radius: 6px;
+  border-radius: clamp(4px, 1.8vw, 6px);
   cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
@@ -76,7 +81,8 @@
 .apply-btn:hover {
   background: #217dbb;
 }
-/* Modal Styles */
+
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -88,56 +94,61 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: clamp(10px, 4vw, 20px);
 }
 
+/* Modal Content */
 .modal-content {
   background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
+  padding: clamp(24px, 6vw, 30px);
+  border-radius: clamp(8px, 3vw, 12px);
+  width: min(95vw, 500px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .close-btn {
   position: absolute;
-  top: 12px;
-  right: 15px;
-  font-size: 20px;
+  top: clamp(10px, 2.5vw, 12px);
+  right: clamp(12px, 3vw, 15px);
+  font-size: clamp(18px, 4vw, 20px);
   cursor: pointer;
   color: #444;
+  font-weight: bold;
 }
 
+/* Application Form */
 .apply-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 15px;
+  gap: clamp(12px, 3.5vw, 15px);
+  margin-top: clamp(12px, 3vw, 15px);
 }
 
 .apply-form input,
 .apply-form textarea {
-  padding: 12px;
+  padding: clamp(10px, 3vw, 12px);
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: clamp(6px, 2vw, 8px);
+  font-size: clamp(0.95rem, 2.8vw, 1rem);
   width: 100%;
 }
 
 .apply-form textarea {
-  resize: none;
-  min-height: 100px;
+  resize: vertical;
+  min-height: clamp(80px, 20vh, 100px);
 }
 
 .submit-btn {
   background: #3498db;
   color: #fff;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: clamp(10px, 3vw, 12px);
+  border-radius: clamp(6px, 2vw, 8px);
+  font-size: clamp(0.95rem, 2.8vw, 1rem);
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
@@ -147,6 +158,7 @@
   background: #217dbb;
 }
 
+/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     transform: scale(0.9);
@@ -157,6 +169,8 @@
     opacity: 1;
   }
 }
-body.modal-open.pro-header {
+
+/* Hide header when modal is open */
+body.modal-open .pro-header {
   display: none;
 }

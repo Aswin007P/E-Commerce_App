@@ -387,3 +387,179 @@
 .logout-profile .profile-link:hover {
   color: #007bff;
 }
+/* ==============================================
+   RESPONSIVE ENHANCEMENTS (Desktop untouched!)
+   ============================================== */
+
+/* ---------- Tablet: 769px to 1024px ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .search-wrapper {
+    max-width: 400px;
+  }
+
+  .user-actions {
+    gap: 0.75rem;
+  }
+
+  .greeting {
+    font-size: 0.85rem;
+  }
+
+  .nav-bar .container {
+    gap: 1.25rem;
+  }
+
+  .logo-link {
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------- Mobile: up to 768px ---------- */
+@media (max-width: 768px) {
+  /* Hide top utility bar (saves vertical space) */
+  .top-bar {
+    display: none;
+  }
+
+  /* Main header container: simplify layout */
+  .main-header .container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Reduce logo size slightly */
+  .logo-link {
+    font-size: 1.3rem;
+  }
+
+  /* Hide full search bar on mobile (too wide) */
+  .search-wrapper {
+    display: none;
+  }
+
+  /* User actions: show only essential icons/buttons */
+  .user-actions {
+    flex-direction: row;
+    gap: 14px;
+    margin-left: 0;
+  }
+
+  /* Hide greeting text on mobile */
+  .greeting {
+    display: none;
+  }
+
+  /* Make cart & profile icons larger and tappable */
+  .cartt,
+  .profile-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px !important;
+  }
+
+  /* Adjust cart badge for smaller icon */
+  .cart-badge {
+    top: -6px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+  }
+
+  /* Hide "Checkout" button on mobile (assume cart page handles it) */
+  .checkout-btn {
+    display: none;
+  }
+
+  /* Reduce padding on Orders button */
+  .orders {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Auth/Login button: remove huge margin, make compact */
+  .auth-link {
+    margin-right: 0;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Navigation: wrap or scroll */
+  .nav-bar {
+    display: block;
+    padding: 0.5rem 0;
+  }
+
+  .nav-bar .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* Logout button: smaller but still tappable */
+  .logout {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+  }
+
+  /* Profile + Logout wrapper */
+  .logout-profile {
+    gap: 10px;
+  }
+
+  /* Ensure all interactive elements have min tap size */
+  .cartt,
+  .profile-icon,
+  .orders,
+  .logout,
+  .auth-link {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ---------- Extra Small Mobile: ≤480px ---------- */
+@media (max-width: 480px) {
+  .logo-link {
+    font-size: 1.2rem;
+  }
+
+  .user-actions {
+    gap: 12px;
+  }
+
+  .orders,
+  .auth-link,
+  .logout {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Stack nav if too crowded */
+  .nav-bar .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
