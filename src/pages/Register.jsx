@@ -1,8 +1,9 @@
-import "./Auth.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../features/auth/authSlice.jsx";
+import { login } from "../features/auth/authSlice";
+
+// Register.jsx
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -26,15 +27,11 @@ const Register = () => {
   const validate = () => {
     const newErrors = {};
     if (!formData.name) newErrors.name = 'Name is required';
-    
     if (!formData.email) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    
     if (!formData.password) newErrors.password = 'Password is required';
     else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
-    
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
-
     return newErrors;
   };
 
@@ -55,77 +52,120 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h1>Create Account</h1>
-        <p>Fill in your details to register</p>
+    <div className="flex items-center justify-center min-h-screen px-4 pt-12 pb-12 md:pt-16 md:pb-16">
+      <div className="w-full max-w-md bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+        <div className="text-center mb-7">
+          <div className="mx-auto w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create Account</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">Fill in your details to register</p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Name */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Full Name
+            </label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={errors.name ? 'input-error' : ''}
               disabled={loading}
+              className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+                errors.name
+                  ? 'border-red-500 dark:border-red-500'
+                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white'
+              }`}
             />
-            {errors.name && <span className="error-text">{errors.name}</span>}
+            {errors.name && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          {/* Email */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Email
+            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={errors.email ? 'input-error' : ''}
               disabled={loading}
+              className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+                errors.email
+                  ? 'border-red-500 dark:border-red-500'
+                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white'
+              }`}
             />
-            {errors.email && <span className="error-text">{errors.email}</span>}
+            {errors.email && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          {/* Password */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Password
+            </label>
             <input
               type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className={errors.password ? 'input-error' : ''}
               disabled={loading}
+              className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+                errors.password
+                  ? 'border-red-500 dark:border-red-500'
+                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white'
+              }`}
             />
-            {errors.password && <span className="error-text">{errors.password}</span>}
+            {errors.password && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.password}</p>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+          {/* Confirm Password */}
+          <div>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              Confirm Password
+            </label>
             <input
               type="password"
               id="confirmPassword"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className={errors.confirmPassword ? 'input-error' : ''}
               disabled={loading}
+              className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+                errors.confirmPassword
+                  ? 'border-red-500 dark:border-red-500'
+                  : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white'
+              }`}
             />
-            {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
+            {errors.confirmPassword && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.confirmPassword}</p>}
           </div>
 
-          <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-all duration-200 ${
+              loading
+                ? 'bg-blue-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md'
+            }`}
+          >
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
 
-        <div className="auth-footer">
-          <p>
+        <div className="mt-6 text-center">
+          <p className="text-gray-600 dark:text-gray-400">
             Already have an account?{' '}
-            <a href="/login">Login here</a>
+            <a href="/login" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">Login here</a>
           </p>
         </div>
       </div>

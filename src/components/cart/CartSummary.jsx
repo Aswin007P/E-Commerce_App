@@ -1,36 +1,41 @@
-import "./CartSummary.css";
 import React from "react";
 import formatCurrency from "../../utils/formatCurrency";
 
 const CartSummary = ({ items }) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.1; // 10% tax
-  const shipping = subtotal > 100 ? 0 : 10; // Free shipping over $100
+  const tax = subtotal * 0.1;
+  const shipping = subtotal > 100 ? 0 : 10;
   const total = subtotal + tax + shipping;
 
   return (
-    <div className="cart-summary card border-0 shadow-sm rounded-3 p-4">
-      <h2 className="h5 fw-bold mb-4 pb-2 border-bottom">Order Summary</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-md">
+      <h2 className="text-lg font-bold mb-4 pb-3 border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">Order Summary</h2>
 
-      <div className="d-flex justify-content-between mb-2">
-        <span className="text-muted">Subtotal ({totalItems} {totalItems === 1 ? 'item' : 'items'})</span>
-        <span>{formatCurrency(subtotal)}</span>
+      <div className="space-y-3">
+        <div className="flex justify-between">
+          <span className="text-gray-600 dark:text-gray-300">
+            Subtotal ({totalItems} {totalItems === 1 ? 'item' : 'items'})
+          </span>
+          <span className="font-medium text-gray-900 dark:text-white">{formatCurrency(subtotal)}</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600 dark:text-gray-300">Shipping</span>
+          <span className="font-medium text-gray-900 dark:text-white">
+            {shipping === 0 ? 'Free' : formatCurrency(shipping)}
+          </span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600 dark:text-gray-300">Tax (10%)</span>
+          <span className="font-medium text-gray-900 dark:text-white">{formatCurrency(tax)}</span>
+        </div>
       </div>
 
-      <div className="d-flex justify-content-between mb-2">
-        <span className="text-muted">Shipping</span>
-        <span>{shipping === 0 ? 'Free' : formatCurrency(shipping)}</span>
-      </div>
-
-      <div className="d-flex justify-content-between mb-3">
-        <span className="text-muted">Tax</span>
-        <span>{formatCurrency(tax)}</span>
-      </div>
-
-      <div className="d-flex justify-content-between pt-3 border-top border-secondary fw-bold fs-5">
+      <div className="flex justify-between pt-4 mt-4 border-t border-gray-200 dark:border-gray-700 font-bold text-lg text-gray-900 dark:text-white">
         <span>Total</span>
-        <span>{formatCurrency(total)}</span>
+        <span className="text-blue-600 dark:text-blue-400">{formatCurrency(total)}</span>
       </div>
     </div>
   );

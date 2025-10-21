@@ -1,5 +1,6 @@
-import "./Return.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+
+// Returns.jsx
 
 const refundPolicies = [
   {
@@ -22,41 +23,44 @@ const refundPolicies = [
 
 const Returns = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const [heights, setHeights] = useState([]);
-  const contentRefs = useRef([]);
 
   const toggleCard = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  useEffect(() => {
-    const newHeights = contentRefs.current.map(ref => ref?.scrollHeight || 0);
-    setHeights(newHeights);
-  }, []);
-
   return (
-    <div className="refunds-container">
-      <h1>Refund & Returns</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Sky-Blue Header */}
+      <div className="mb-10">
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800/40 max-w-2xl mx-auto">
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white text-center">
+            Refund & Returns
+          </h1>
+        </div>
+      </div>
 
-      <div className="refund-list">
+      <div className="max-w-3xl mx-auto space-y-3">
         {refundPolicies.map((policy, index) => {
           const isOpen = openIndex === index;
           return (
-            <div key={index} className="refund-card">
-              <div
-                className={`refund-header ${isOpen ? "open" : ""}`}
+            <div
+              key={index}
+              className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden bg-white dark:bg-gray-800 transition"
+            >
+              <button
+                className="w-full px-5 py-4 text-left font-semibold text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700/50 flex justify-between items-center focus:outline-none"
                 onClick={() => toggleCard(index)}
               >
-                <span>{policy.title}</span>
-                <span>{isOpen ? "−" : "+"}</span>
-              </div>
-              <div
-                className={`refund-body ${isOpen ? "open" : ""}`}
-                ref={(el) => (contentRefs.current[index] = el)}
-                style={{ maxHeight: isOpen ? `${heights[index]}px` : "0px" }}
-              >
-                <p>{policy.content}</p>
-              </div>
+                {policy.title}
+                <span className="text-xl text-gray-500 dark:text-gray-400">
+                  {isOpen ? '−' : '+'}
+                </span>
+              </button>
+              {isOpen && (
+                <div className="px-5 pb-5 pt-2 text-gray-600 dark:text-gray-300">
+                  <p>{policy.content}</p>
+                </div>
+              )}
             </div>
           );
         })}

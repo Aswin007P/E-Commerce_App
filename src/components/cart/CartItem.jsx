@@ -1,5 +1,3 @@
-import "./CartItem.css";
-import React from "react";
 import formatCurrency from "../../utils/formatCurrency";
 import { useDispatch } from "react-redux";
 import { decrementQuantity, incrementQuantity, removeFromCart } from "../../features/cart/cartSlice";
@@ -9,41 +7,34 @@ const CartItem = ({ item }) => {
   const { id, name, price, image, quantity } = item;
   const totalPrice = price * quantity;
 
-  const handleRemove = () => {
-    dispatch(removeFromCart(id));
-  };
+  const handleRemove = () => dispatch(removeFromCart(id));
 
   return (
-    <div className="cart-item card mb-3 border-0 shadow-sm rounded-3 overflow-hidden">
-      <div className="row g-0 align-items-center p-2 p-md-3">
-        {/* Image */}
-        <div className="col-2 col-md-1">
-          <img
-            src={image}
-            alt={name}
-            className="img-fluid rounded"
-            style={{ height: "60px", objectFit: "cover" }}
-          />
+    <div className="mb-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-md dark:hover:shadow-lg">
+      <div className="flex flex-col md:flex-row items-center p-4 gap-4">
+        <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden shadow-sm">
+          <img src={image} alt={name} className="w-full h-full object-cover" />
         </div>
 
-        {/* Product Info */}
-        <div className="col-5 col-md-4">
-          <h6 className="fw-semibold mb-1 text-truncate">{name}</h6>
-          <p className="text-primary mb-0 fw-medium">{formatCurrency(price)}</p>
+        <div className="flex-1 min-w-0">
+          <h6 className="font-semibold text-gray-900 dark:text-white truncate">{name}</h6>
+          <p className="text-blue-600 dark:text-blue-400 font-medium">{formatCurrency(price)}</p>
         </div>
 
-        {/* Quantity Controls */}
-        <div className="col-5 col-md-3 d-flex align-items-center">
+        <div className="flex items-center bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1 w-28 justify-center">
           <button
-            className="btn btn-outline-secondary btn-sm rounded-circle"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-600 hover:shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-500"
             onClick={() => dispatch(decrementQuantity(id))}
             aria-label="Decrease quantity"
+            disabled={quantity <= 1}
           >
             −
           </button>
-          <span className="mx-2 fw-semibold">{quantity}</span>
+          <span className="mx-2 font-semibold text-gray-900 dark:text-white min-w-[1.8rem] text-center tabular-nums">
+            {quantity}
+          </span>
           <button
-            className="btn btn-outline-secondary btn-sm rounded-circle"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-600 hover:shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-500"
             onClick={() => dispatch(incrementQuantity(id))}
             aria-label="Increase quantity"
           >
@@ -51,15 +42,13 @@ const CartItem = ({ item }) => {
           </button>
         </div>
 
-        {/* Total Price */}
-        <div className="col-4 col-md-2 text-end d-none d-md-block fw-semibold">
+        <div className="hidden md:block font-semibold text-gray-900 dark:text-white min-w-[80px] text-right tabular-nums">
           {formatCurrency(totalPrice)}
         </div>
 
-        {/* Remove Button (visible on hover) */}
-        <div className="col-2 col-md-1 text-center position-relative">
+        <div className="flex justify-center">
           <button
-            className="cart-item-remove btn btn-sm rounded-circle"
+            className="w-8 h-8 rounded-full bg-red-50 dark:bg-red-900/30 text-red-500 dark:text-red-400 flex items-center justify-center hover:bg-red-100 dark:hover:bg-red-800/50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-500"
             onClick={handleRemove}
             aria-label="Remove item"
           >
